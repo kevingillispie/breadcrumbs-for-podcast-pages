@@ -1,0 +1,36 @@
+﻿<div class="page-header" style="background-image: url('/Content/gallery-books.jpg')">
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+        <ul class="breadcrumb">
+            <li><a href='@Url.Action("Index", "Home")'>Home</a></li>
+
+            @{ 
+                if (ViewContext.RouteData.Values["controller"].ToString() != "Home")
+                {
+                    <li class="active">The Tech Academy @ViewContext.RouteData.Values["controller"].ToString()</li>
+
+                    if (ViewContext.RouteData.Values["action"].ToString() != "Index")
+                    {
+                    <li class="active">
+                        @ViewContext.RouteData.Values["action"].ToString()
+                    </li>
+                    }
+                }
+
+                if (ViewBag.Title == "About" || ViewBag.title == "Contact")
+                {
+                    <li class="active">@ViewContext.RouteData.Values["action"].ToString() The Tech Academy
+                    </li>
+
+                    if (ViewContext.RouteData.Values["action"].ToString() == "Index")
+                    {
+                        <li class="active">
+                            @ViewContext.RouteData.Values["action"].ToString()
+                        </li>
+                    }
+                }
+            }
+
+        </ul>
+    </div>
+</div>
